@@ -15,7 +15,7 @@ fn main() {
                     primary_window: Some(window),
                     ..default()
                 }),
-        ) // prevents blurry sprites
+        )
         .add_systems(PreStartup, configure_gizmos)
         .add_systems(Startup, setup)
         .add_systems(Update, update_gizmos)
