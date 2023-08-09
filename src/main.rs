@@ -16,15 +16,10 @@ fn main() {
                     ..default()
                 }),
         )
-        .add_systems(PreStartup, configure_gizmos)
         .add_systems(Startup, setup)
         .add_systems(Update, update_gizmos)
         .insert_resource(ClearColor(Color::rgb(0.0, 0.0, 0.0)))
         .run();
-}
-
-fn configure_gizmos(mut config: ResMut<GizmoConfig>) {
-    config.depth_bias = -1.;
 }
 
 fn setup(mut commands: Commands, assets: Res<AssetServer>) {
@@ -33,7 +28,7 @@ fn setup(mut commands: Commands, assets: Res<AssetServer>) {
     let texture: Handle<Image> = assets.load("sprite.png");
     commands.spawn(SpriteBundle {
         texture,
-        transform: Transform::from_translation(Vec3::new(0., 0., 1.)),
+        transform: Transform::from_translation(Vec3::new(0., 0., 20.)),
         ..Default::default()
     });
 }
